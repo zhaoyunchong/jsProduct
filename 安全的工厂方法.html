@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="container">
+		
+	</div>
+</body>
+	<script>
+		var Factory=function(type,content){
+			if(this instanceof Factory){
+				//如果this是指向当前Factory类的话 就创建一个新的实例
+				return new this[type](content);
+			}else{
+				//否则也是返回一个新的实例 防止用户忘记输入new关键字,那样的话this指向的是window对象
+				return new Factory(type,content);
+			}
+		}
+		Factory.prototype={
+			java:function(content){
+				this.content=content;
+				(function(content){
+					var div=document.createElement('div');
+					div.innerHTML=content;
+					div.style.border='1px solid red';
+					document.getElementById('container').appendChild(div);
+				})(content);
+			},
+			php:function(content){
+				this.content=content;
+				(function(content){
+					var div=document.createElement('div');
+					div.innerHTML=content;
+					div.style.border='1px solid blue';
+					document.getElementById('container').appendChild(div);
+				})(content);
+			},
+			javascript:function(content){
+				this.content=content;
+				(function(content){
+					var div=document.createElement('div');
+					div.innerHTML=content;
+					div.style.border='1px solid green';
+					document.getElementById('container').appendChild(div);
+				})(content);
+			}
+		}
+		var data=[
+			{type:'java',content:'java天下第一!'},
+			{type:'php',content:'php是世界上最好的语言!'},
+			{type:'javascript',content:'javascript谁与争锋!'}
+		]
+		for(var i=0;i<data.length;i++){
+			Factory(data[i].type,data[i].content)
+		}
+	</script>
+</html>

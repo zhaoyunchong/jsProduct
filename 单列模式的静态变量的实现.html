@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	const PI=3.14;
+	//es6新特性 const关键字 常量 一旦定义之后就不能重新赋值否则就报错
+	// PI=5.16;
+	console.log(PI)
+	//通过单例模式实现
+	// var chong={
+	// 	name:function(name){
+	// 		this.name=name;
+	// 		return this.name;
+	// 	},
+	// 	getName:function(name){
+	// 		return this.name(name);
+	// 	}
+	// }
+	// console.log(chong.getName('zhaoyunchong'))
+	//单例模式 模块分明
+	// baidu.dom.addClass   添加元素类
+	// baidu.dom.append     插入元素
+	// baidu.event.stopPropagation  阻止冒泡
+	// baidu.event.preventDefault   阻止默认行为
+	// baidu.event.trim     去除字符串首尾的空白字符
+	// baiud.string.encodeHTML   将字符串进行html编码
+	// var A={    //小型代码库
+	// 	ajax:{
+	// 		get:function(){
+	// 			$.ajax();
+	// 		},
+	// 		post:function(){
+	// 			$.ajax();
+	// 		}
+	// 	}
+	// }
+	var chang=function(){
+		var app=100;
+		this.getApp=function(){
+			console.log(app);
+		}
+	}
+	var a=new chang();
+	console.log(chang().prototype.getApp());
+	//封转一个常量
+	var Conf=(function(){
+		//私有变量
+		var conf={
+			MAX_NAME:100,
+			MIN_NAME:1,
+			COUNT:1000
+		}
+		//返回取值器对象
+		return {
+			//取值器方法
+			get:function(name){
+				return conf[name]?conf[name]:null;
+			}
+		}
+	})();
+	//获取静态对象
+	var count=Conf.get('COUNT');
+	console.log(count);
+</script>
+</html>

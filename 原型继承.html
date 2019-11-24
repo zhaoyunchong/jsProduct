@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+	<script>
+		function prototypeExtend(){
+			var F=function(){}  //创建一个缓存类,为实例化返回对象临时创建
+			args=arguments;
+			i=0;
+			// console.log(args);
+			len=args.length;
+			// console.log(len)
+			for(;i<len;i++){
+				//遍历每个模板对象中的属性  
+				//浅克隆 实现了原型对象的共享
+				for(var j in args[i]){
+					//将这些属性复制到缓存类原型中
+					F.prototype[j]=args[i][j];
+				}
+			}
+			console.log(new F())
+			//返回缓存类的一个实例
+			return new F();
+		}
+		var penguin=prototypeExtend({
+				speed:20,
+				swim:function(){
+					console.log('游泳速度'+this.speed);
+				}
+			},
+			{
+				run:function(speed){
+					console.log('奔跑速度'+speed);
+				}
+			},
+			{
+				jump:function(){
+					console.log('跳跃动作!')
+				}
+			}
+		)
+		penguin.swim();
+		penguin.run(10);
+		penguin.jump();
+	</script>
+</html>

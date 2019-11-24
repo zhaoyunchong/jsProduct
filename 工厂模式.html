@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<h1>11111</h1>
+</body>
+<script>
+	var loginAlert=function(text){
+		this.content=text;
+	}
+	loginAlert.prototype.show=function(){
+		console.log(111);
+		alert(this.content);
+	}
+	var loginFailConfirm=new loginAlert('你的账号不存在!');
+	console.log(1);
+	console.log(loginFailConfirm)
+	loginFailConfirm.show();
+</script>
+</html>

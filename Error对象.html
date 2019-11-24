@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="demo"></div>
+</body>
+<script>
+	// console.log(typeof Error());
+	try{
+		addAlert('Welcome');
+	}catch(err){
+		document.getElementById('demo').innerHTML=err.name+'<br>'+err.message;
+	}
+	var a=new Error('对不起没定义!');
+	//Error 是一个错误的对象函数  里面传入参数是 message错误信息
+	console.log(typeof a,a.message)
+</script>
+</html>

@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="container">
+		
+	</div>
+</body>
+	<script>
+		var Car=function(){};
+		Car.prototype={
+			getPrice:function(){
+				return new Error('抽象方法不能调用!');
+			},
+			getSpeed:function(){
+				return new Error('抽象方法不能调用!');
+			}
+		}	
+		var car=Car();//注意 如果函数名字首字母大写的话 这个就是一个类名而不是一个函数名字
+		car.getPrice();
+	</script>
+</html>
