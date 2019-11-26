@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	//对象类
+	var CheckObject=function(){};
+	CheckObject.prototype={
+		checkName:function(){
+			console.log('检查名字!');
+			return this;
+		},
+		checkPass:function(){
+			console.log('检查密码!');
+			return this;
+		},
+		checkEmail:function(){
+			console.log('检查邮箱!');
+			return this;
+		},
+	}
+	var a=new CheckObject();
+	console.log(a.checkName().checkEmail().checkPass());
+</script>
+</html>

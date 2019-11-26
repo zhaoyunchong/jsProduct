@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function SuperClass(){
+		this.superValue=true;
+	}
+	SuperClass.prototype.getSuperValue=function(){
+		return this.superValue;
+	}
+	function SubClass(){
+		this.subValue=false;
+	}
+	SubClass.prototype=new SuperClass();
+
+	SubClass.prototype.getSubValue=function(){
+		return this.subValue;
+	}
+</script>
+</html>

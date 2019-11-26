@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	//对象类  给原生的全局函数对象 添加一个方法
+	Function.prototype.addMethod=function(name,callback){
+		this.prototype[name]=callback;
+		return this;
+	}
+	var methods=function(){};
+
+	methods.addMethod('checkName',function(){
+		console.log('检查名字!');
+		// return this;
+	}).addMethod('checkEmail',function(){
+		console.log('检查邮箱!');
+		// return this;
+	}).addMethod('checkPass',function(){
+		console.log('检查密码!');
+		// return this;
+	})
+	console.log(methods);
+	var a=new methods();
+	console.log(a.checkEmail(),a.checkName());
+</script>
+</html>

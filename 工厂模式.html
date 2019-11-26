@@ -1,23 +1,28 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
 </head>
 <body>
-	<h1>11111</h1>
+	
 </body>
 <script>
-	var loginAlert=function(text){
-		this.content=text;
+	function createBall(name,member){
+		var obj=new Object();
+		obj.name=name;
+		obj.member=member;
+		obj.intro=function(){
+			console.log(`我是${this.name}`)
+		}
+		obj.getMember=function(){
+			console.log(`${this.name}需要${this.member}个人!`)
+		}
+		//将对象返回
+		return obj;
 	}
-	loginAlert.prototype.show=function(){
-		console.log(111);
-		alert(this.content);
-	}
-	var loginFailConfirm=new loginAlert('你的账号不存在!');
-	console.log(1);
-	console.log(loginFailConfirm)
-	loginFailConfirm.show();
+	var football=createBall('足球',11);
+	console.log(football.name);
+	football.getMember();
 </script>
 </html>

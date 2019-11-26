@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	//对象类  给原生的全局函数对象 添加一个方法
+	var Book=function(title,time,type){  //声明一个创建的对象的类的话 首字母最好大写
+		if(this instanceof Book){
+			this.title=title;
+			this.time=time;
+			this.type=type;
+		}else{
+			return new Book(title,time,type);
+		}
+	}
+	//这是js的一种设计模式 如果忘记写new的话
+	var book=Book('js','2019','web前端');//前面没有new的情况下赋值到了 window的全局对象里面
+	console.log(book);
+	console.log(window.title,window.time,window.type)
+</script>
+</html>

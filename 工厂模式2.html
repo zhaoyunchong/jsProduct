@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var BasketBall=function(){
+		this.intro='我是篮球';
+	}
+	BasketBall.prototype.getMember=function(){
+		console.log('篮球需要五个人!')
+	};
+	var FootBall=function(){
+		this.intro='我是足球';
+	}
+	FootBall.prototype.getMember=function(){
+		console.log('足球需要11个人!');
+	}
+	var SportsFactory=function(name){
+		switch(name){
+			case 'NBA':
+				return new BasketBall();
+			case 'worldCup':
+				return new FootBall();
+		}
+	}
+	var football=SportsFactory('worldCup');
+	console.log(football.intro);
+	football.getMember();
+</script>
+</html>

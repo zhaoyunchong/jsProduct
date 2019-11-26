@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	//对象类
+	var CheckObject=function(){
+		this.checkName=function(){
+			console.log('检查名字!');
+		}
+		this.checkPass=function(){
+			console.log('检查密码!');
+		}
+		this.checkEmail=function(){
+			console.log('检查邮箱!');
+		}
+	}
+	var a=new CheckObject();
+	var b=new CheckObject();
+	a.checkName();
+	b.checkName();
+	console.log(a==b);
+	//函数对象
+	var CheckObject1=function(){
+		return {
+			checkName:function(){
+				console.log('检查名字!');
+			},
+			checkPass:function(){
+				console.log('检查密码!');
+			},
+			checkEmail:function(){
+				console.log('检查邮箱!');
+			}
+		}
+	}
+	var c=CheckObject1();
+	var d=CheckObject1();
+	c.checkName();
+	d.checkName();
+	console.log(c==d);
+</script>
+</html>

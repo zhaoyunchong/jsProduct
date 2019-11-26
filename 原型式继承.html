@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+	<script>
+		//原型式继承 只是值类型继承了 引用类型还是没有继承
+		function inheritObject(o){
+			//声明一个过渡函数对象
+			function F(){}
+			F.prototype=o;
+			return new F();
+		}
+		var obj={
+			name:'javascript设计模式',
+			books:['javascript','html','css']
+		}
+		var o1=inheritObject(obj);
+		var o2=inheritObject(obj);
+		console.log(o1==o2)
+		o1.name='vue';
+		o1.books[1]='angular';
+		console.log(o1.name);
+		console.log(o2.name);
+		console.log(o1.books);
+		console.log(o2.books);
+	</script>
+</html>
