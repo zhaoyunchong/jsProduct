@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	//参数适配器 用来检测一个 必须要传递参数的时候 而忘记的情况
+	// 适配器 :将一个类的接口(方法或者属性)转换成另外一个接口
+	function doSomeThing(obj){
+		var _adpater={
+			name:'雨夜清荷',
+			title:'设计模式',
+			age:24,
+			color:'pink',
+			size:100,
+			prize:50
+		};
+		for(var i in _adpater){
+			_adpater[i]=obj[i] || _adpater[i];
+		}
+	}
+</script>
+</html>

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function a(){
+		let n=5;
+		if(n){
+			// console.log(n);
+			let n=10;//let没有变量提升的作用
+			console.log(n);
+		}
+		//let具有块作用域的作用  在{}利用用let定义的数据 {}无法访问到的
+		console.log(n);
+	}
+	a();
+	var p;
+	{
+		let p=10;
+		console.log(p)
+	}
+	//let定义的关键字 在window下无法访问的到
+	console.log(p);
+</script>
+</html>

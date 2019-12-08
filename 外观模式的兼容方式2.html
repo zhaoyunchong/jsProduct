@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" id="userInput">
+	<button id="myInput">点击</button>
+</body>
+<script>
+	//外观模式实现
+	function addEvent(dom,type,fn){
+		//对于DOM2级事件处理程序addEventListener方法的浏览器
+		if(dom.addEventListener){
+			dom.addEventListener(type,fn,false);
+		//对于不支持addEventListener方法 但支持attachEvent方法的浏览器
+		}else if(dom.attachEvent){
+			dom.attachEvent('on'+type,fn);
+			//对于不支持addEventListener方法也不支持attachEvent方法,但支持on+'事件名的浏览器'
+		}else{
+			dom['on'+type]=fn;
+		}
+	}
+	//获取事件对象
+	var getEvent=function(event){
+		//标准浏览器返回event,IE下window.event
+		return event || window.event;
+	}
+	//获取目标元素
+	var getTarget=function(event){
+		var event=getEvent(event);
+		//标准浏览器下时event.target ie是event.SrcElement
+		return event.target || event.srcElement;
+	}
+	//阻止默认行为
+	var preventDefault=function(event){
+		var event=getEvent(event);
+		//标准浏览器  判断 event.preventDefault存在这个属性的话
+		if(event.preventDefault){
+			event.preventDefault();// 调用这个方法
+		}else{   //IE浏览器
+			event.returnValue=false;
+		}
+	}
+	document.onclick=function(e){
+		//阻止默认行为
+		preventDefault(e);
+		//获取事件源目标对象
+		if(getTarget(e) !== document.getElementById('myInput')){
+			hideInputSug();
+		}
+	}
+	var myInput=document.getElementById('myInput');
+	addEvent(myInput,'click',function(){
+		console.log('绑定第一个事件!');
+	})
+	addEvent(myInput,'click',function(){
+		console.log('绑定第二个事件!')
+	})
+	addEvent(myInput,'click',function(){
+		console.log('绑定第三个事件!')
+	})
+</script>
+</html>

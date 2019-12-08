@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var arr=['JavaScript','book','设计模式','11.26'];
+	var obj={
+		name:'',
+		type:'',
+		title:'',
+		time:''
+	}
+	function arrToObjAdapter(arr){
+		return {
+			name:arr[0],
+			type:arr[1],
+			title:arr[2],
+			data:arr[3]
+		}
+	}
+	var obj=arrToObjAdapter(arr);
+	console.log(obj);
+</script>
+</html>

@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function Person(){
+		this.name='我的名字叫做赵云冲,我希望能够改变世界!';
+	}
+	Person.prototype={
+		init:function(){
+			//这里的this指向是 定义的时候所在作用域的对象
+			// this 此时是在Person对象的原型对象中
+			console.log(this.name);
+		}
+	}
+	//new 关键字 更改了this指向
+	var yunchong=new Person();
+	console.log(yunchong.name)
+	// yunchong.init();
+	//如果不用new的话 
+	Person();//Person是作为一个在全局作用域中的函数 this指向的是window对象
+	console.log(window.name)
+	// window.name='yunchong';
+	var People={
+		name:'赵云冲',
+		//对象中的箭头函数 this指向window对象
+		getName:()=>{
+			console.log(11);
+			console.log(this.name);
+		}
+	}
+	People.getName();
+</script>
+</html>

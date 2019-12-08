@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" id="userInput">
+	<button id="myInput">点击</button>
+</body>
+<script>
+	//外观模式实现
+	function addEvent(dom,type,fn){
+		//对于DOM2级事件处理程序addEventListener方法的浏览器
+		if(dom.addEventListener){
+			dom.addEventListener(type,fn,false);
+		//对于不支持addEventListener方法 但支持attachEvent方法的浏览器
+		}else if(dom.attachEvent){
+			dom.attachEvent('on'+type,fn);
+			//对于不支持addEventListener方法也不支持attachEvent方法,但支持on+'事件名的浏览器'
+		}else{
+			dom['on'+type]=fn;
+		}
+	}
+	var myInput=document.getElementById('myInput');
+	addEvent(myInput,'click',function(){
+		console.log('绑定第一个事件!');
+	})
+	addEvent(myInput,'click',function(){
+		console.log('绑定第二个事件!')
+	})
+	addEvent(myInput,'click',function(){
+		console.log('绑定第三个事件!')
+	})
+</script>
+</html>

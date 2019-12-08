@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	async function timeout(){
+		return 'hello world!';
+	}
+	timeout().then(result=>{
+		console.log(result)
+	});
+	console.log('虽然我在后面,但是我先执行!');
+	// console.log(timeout());
+</script>
+</html>

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#box{
+			height:200px;
+			width: 200px;
+			background-color:#f00;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		
+	</div>
+</body>
+<script>
+	var A={
+		//通过id获取元素
+		g:function(id){
+			return document.getElementById(id);
+		},
+		//设置元素css属性
+		css:function(id,key,value){
+			document.getElementById(id).style[key]=value;
+		},
+		//设置元素属性
+		attr:function(id,key,value){
+			document.getElementById(id)[key]=value;
+		},
+		//设置元素的内容
+		html:function(id,html){
+			document.getElementById(id).innerHTML=html;
+		},
+		//为元素绑定事件
+		on:function(id,type,fn){
+			document.getElementById(id)[type]=fn;
+		}
+	}
+	A.css('box','background','#0ff');
+	A.html('box','hello world')
+</script>
+</html>
