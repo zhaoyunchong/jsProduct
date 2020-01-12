@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var ceResult=function(){
+		var state={
+			state0:function(){
+				console.log('状态1');
+			},
+			state1:function(){
+				console.log('状态2')
+			},
+			state2:function(){
+				console.log('状态3')
+			}
+		}
+		function show(result){
+			state['state'+result]&&state['state'+result]()
+		}
+		return {
+			show:show
+		}
+	}()
+	ceResult.show(0);
+	ceResult.show(1);
+	ceResult.show(2);
+</script>
+</html>

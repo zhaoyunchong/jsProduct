@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		var Observer=(function(){
+			var __message={};
+			return {
+				//注册信息接口
+				regist:function(type,fn){
+					if(typeof __message[type]==='undefined'){
+						__message[type]=[fn];
+					}else{
+						__message[type].push(fn);
+					}
+				},
+				//发布信息接口
+				fire:function(type,args){
+					//如果该消息没有注册,则返回
+					if(!__message[type])
+						return;
+					var events={
+						type:type,
+						args:args||{}  //消息携带参数
+					},
+					i=0,                          //消息循环变量
+					len=__message[type].length;   //消息动作长度
+					for(;i<len;i++){
+						//依次执行注册的消息对应的执行队列
+						__message[type][i].call(this,events);
+					}
+				},
+				//移除信息接口
+				remove:function(type,fn){
+					//判断消息是否存在
+					if(__message[type] instanceof Array){
+						//从最后一个动作遍历
+						var i=__message[type].length-1;
+						for(;i>=0;i--){
+							//如果存在该动作则在消息动作序列中移除对应的动作
+							__message[type][i]===fn&&__message[type].splice[i,1];
+						}
+					}
+				}
+			  }
+			})();
+			//注册一个事件
+			Observer.regist('test',function(e){
+				console.log(e.type,e.args.msg);
+			});
+			//触发一个事件
+			Observer.fire('test',{msg:'传递参数'});
+	</script>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title></title>
+	<style type="text/css">
+		#parent{
+			height: 600px;
+			width: 600px;
+			background:#f00;
+		}
+		#child{
+			height: 200px;
+			width: 200px;
+			background:#aaf;
+		}
+	</style>
+</head>
+<body>
+	<div id="parent">
+		<div id="child">
+			
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+	//冒泡传递 dom2级别事件
+	parent.addEventListener('click',function(){
+		alert('弹出父亲对话框!')
+	},true)
+	//冒泡传递 dom2级别事件
+	child.addEventListener('click',function(e){
+		e.stopPropagation();
+		alert('弹出儿子对话框!')
+	},true)
+	
+</script>
+</html>
